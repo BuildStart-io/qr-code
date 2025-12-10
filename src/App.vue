@@ -53,7 +53,13 @@ export default {
       qrCodeData.value = ''
       
       try {
-        const response = await fetch('http://api.sangeethnipun.cf/qrcode')
+        // Use proxy in dev mode, CORS proxy in production
+        const isDev = import.meta.env.DEV
+        const apiUrl = isDev 
+          ? '/api/qrcode' 
+          : 'https://api.allorigins.win/raw?url=' + encodeURIComponent('http://api.sangeethnipun.cf/qrcode')
+        
+        const response = await fetch(apiUrl)
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)

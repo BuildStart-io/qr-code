@@ -5,4 +5,13 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   base: '/qr-code/',
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://api.sangeethnipun.cf',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  }
 })
