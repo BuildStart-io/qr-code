@@ -53,7 +53,7 @@ export default {
       qrCodeData.value = ''
       
       try {
-        const response = await fetch('/api/qrcode')
+        const response = await fetch('http://api.sangeethnipun.cf/qrcode')
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
