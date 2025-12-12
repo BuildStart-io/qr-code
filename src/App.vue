@@ -53,7 +53,7 @@ export default {
       qrCodeData.value = ''
       
       try {
-        // Use proxy in dev mode, CORS proxy in production
+        // Use proxy in dev, CORS proxy in production (GitHub Pages)
         const isDev = import.meta.env.DEV
         const apiUrl = isDev 
           ? '/api/qrcode' 
